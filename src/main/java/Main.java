@@ -9,13 +9,13 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        Calkulater calkul = new Calkulater();
+        org.example.Calkulater calkul = new org.example.Calkulater();
 
 
         System.out.println("На скольких человек разделить счет?");
 
         int person;
-        //person = sc.nextInt();
+
 
         while (!sc.hasNextInt()) {
             sc.next();

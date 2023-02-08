@@ -7,9 +7,11 @@ public class Calkulater {
     double cost;
     double summ = 0;
     double money = 0;
-
+    int ost;
+    double ostl;
 
     void calk(int person) {
+        org.example.Ostatok rur = new org.example.Ostatok();
         while (true) {
 
             System.out.println("Введите Название блюда");
@@ -17,10 +19,18 @@ public class Calkulater {
             if (!(name.equalsIgnoreCase("Завершить"))) {
                 System.out.println("Введите стоимость в формате рублей.копеек");
 
-                cost = sc.nextDouble();
+               // cost = sc.nextDouble();
+                while (true){
+                    cost = sc.nextDouble();
+                    if (cost <= 0 ) {
+                        System.out.println("Не корректное цифра");}
+                       // else if (!sc.hasNextDouble()) {System.out.println("Буквы нельзя в стоимсть вводить");}
+                     else { break;}
+                }
 
                 summ = summ + cost;
                 nameAll = nameAll + "\n" + name;
+
                 String messageTemplate1 = "Вы успешно добавили товар на общую сумму %.2f руб., добавьте товар еще, или наберите слово Завершить";
                 System.out.println(String.format(messageTemplate1, summ));
             } else {
@@ -29,8 +39,14 @@ public class Calkulater {
         }
 
 
+
         money = summ / person;
-        String messageTemplate = "Вы заказали %s, скидываемся по %.2f руб.";
-        System.out.println(String.format(messageTemplate, nameAll, money));
+
+        ostl = money % 10f;
+        ost = (int)ostl;
+
+        rur.ostat(ost, money, nameAll);
+
+
     }
 }

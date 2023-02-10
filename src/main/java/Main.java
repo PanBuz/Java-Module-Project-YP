@@ -17,25 +17,22 @@ public class Main {
         int person;
 
 
-        while (!sc.hasNextInt()) {
-            sc.next();
-            System.out.println("Не корректное количество гостей!");
-        }
-
-
         while (true) {
+            while (!sc.hasNextInt()) {
+                System.out.println("Введены буквы вместо цифр");
+                sc.next();
+            }
             person = sc.nextInt();
             if (person > 1) {
                 System.out.println("Будем делить на , " + person + " человек!");
                 break;
             } else if (person == 1) {
                 System.out.println("Нет смысла делить счет на одного человека!");
-            }
-
-            else  {
+            } else {
                 System.out.println("Не корректное количество гостей!");
             }
         }
+
         calkul.calk(person);
 
 

@@ -1,51 +1,57 @@
 package org.example;
+
 import java.util.Scanner;
+
 public class Calkulater {
     Scanner sc = new Scanner(System.in);
-    String name;
-    String nameAll = ":";
+    String nameOfDishes;
+    String nameOfDishesAll = ":";
     double cost;
-    double summ = 0;
-    double money = 0;
-    int ost;
-    double ostl;
+    private double summ = 0;
+    private double moneyPerPerson = 0;
+    private int padeg;
+    private double padegD;
 
     void calk(int person) {
         org.example.Ostatok rur = new org.example.Ostatok();
         while (true) {
 
             System.out.println("Введите Название блюда");
-            name = sc.next();
-            if (!(name.equalsIgnoreCase("Завершить"))) {
+            nameOfDishes = sc.next();
+            if (!(nameOfDishes.equalsIgnoreCase("Завершить"))) {
                 System.out.println("Введите стоимость в формате рублей.копеек");
 
-               // cost = sc.nextDouble();
-                while (true){
+
+                while (true) {
+                    while (!sc.hasNextDouble()) {
+                        System.out.println("Введены буквы вместо цифр");
+                        sc.next();
+                    }
                     cost = sc.nextDouble();
-                    if (cost <= 0 ) {
-                        System.out.println("Не корректное цифра");}
-                       // else if (!sc.hasNextDouble()) {System.out.println("Буквы нельзя в стоимсть вводить");}
-                     else { break;}
+                    if (cost <= 0) {
+                        System.out.println("Не корректное цифра");
+                    } else {
+                        break;
+                    }
                 }
 
                 summ = summ + cost;
-                nameAll = nameAll + "\n" + name;
+                nameOfDishesAll = nameOfDishesAll + "\n" + nameOfDishes;
 
-                String messageTemplate1 = "Вы успешно добавили товар на общую сумму %.2f руб., добавьте товар еще, или наберите слово Завершить";
-                System.out.println(String.format(messageTemplate1, summ));
+                String messageTemplate1 = "Вы успешно добавили товар на общую сумму %.2f руб., добавьте товар еще, или наберите слово Завершить \n";
+                System.out.printf(messageTemplate1, summ);
             } else {
                 break;
             }
         }
 
 
+        moneyPerPerson = summ / person;
 
-        money = summ / person;
+        padegD = moneyPerPerson % 20f;
+        padeg = (int) padegD;
 
-        ostl = money % 10f;
-        ost = (int)ostl;
-
-        rur.ostat(ost, money, nameAll);
+        rur.ostat(padeg, moneyPerPerson, nameOfDishesAll);
 
 
     }

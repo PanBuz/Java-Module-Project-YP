@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 public class Calkulater {
     Scanner sc = new Scanner(System.in);
-    String nameOfDishes;
-    String nameOfDishesAll = ":";
+    String nameOfDishes = "";
+    String nameOfDishesAll = "";
     double cost;
     private double summ = 0;
     private double moneyPerPerson = 0;
-    private int padeg;
-    private double padegD;
+
 
     void calk(int person) {
         org.example.Ostatok rur = new org.example.Ostatok();
@@ -29,7 +28,7 @@ public class Calkulater {
                     }
                     cost = sc.nextDouble();
                     if (cost <= 0) {
-                        System.out.println("Не корректное цифра");
+                        System.out.println("Не корректная цифра");
                     } else {
                         break;
                     }
@@ -48,10 +47,8 @@ public class Calkulater {
 
         moneyPerPerson = summ / person;
 
-        padegD = moneyPerPerson % 20f;
-        padeg = (int) padegD;
 
-        rur.ostat(padeg, moneyPerPerson, nameOfDishesAll);
+        rur.ostat(moneyPerPerson, nameOfDishesAll);
 
 
     }

@@ -1,8 +1,14 @@
 
 package org.example;
 public class Ostatok {
-     void ostat (int padeg, double moneyPerPerson, String nameOfDishesAll){
+     void ostat (double moneyPerPerson, String nameOfDishesAll){
         String rubli = new String();
+        int padeg;
+        double padegD;
+
+         padegD = moneyPerPerson % 100f;
+         if (padegD > 14) {padegD = padegD % 10f;}
+         padeg = (int) padegD;
 
         switch (padeg){
             case 0: rubli ="Рублей"; break;
@@ -20,13 +26,10 @@ public class Ostatok {
             case 12: rubli ="Рублей"; break;
             case 13: rubli ="Рублей"; break;
             case 14: rubli ="Рублей"; break;
-            case 15: rubli ="Рублей"; break;
-            case 16: rubli ="Рублей"; break;
-            case 17: rubli ="Рублей"; break;
-            case 18: rubli ="Рублей"; break;
-            case 19: rubli ="Рублей"; break;
+
         }
-         String messageTemplate = "Вы заказали %s, скидываемся по %.2f %s.";
+
+         String messageTemplate = "Добавленные товары: %s, каждый платит %.2f %s.";
          System.out.printf(messageTemplate, nameOfDishesAll, moneyPerPerson, rubli);
     }
 }
